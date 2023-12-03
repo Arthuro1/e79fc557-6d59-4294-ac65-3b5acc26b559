@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatToolbarModule, 
     MatButtonModule, 
     MatIconModule, 
-    MatBadgeModule
+    MatBadgeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
