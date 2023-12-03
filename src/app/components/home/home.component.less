@@ -69,6 +69,7 @@
     .content {
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
     width: 100%;
     max-width: 700px;
     margin-bottom: 3rem;
@@ -83,9 +84,10 @@
     }
     
     .divider {
-    width: 1px;
-    background: var(--red-to-pink-to-purple-vertical-gradient);
-    margin-inline: 0.5rem;
+        height: 1px;
+        width: 100%;
+        background: var(--red-to-pink-to-purple-horizontal-gradient);
+        margin-block: 1.5rem;
     }
     
     .pill-group {
@@ -165,3 +167,4 @@
         margin-block: 1.5rem;
     }
     }
+    
