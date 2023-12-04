@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatBadgeModule} from '@angular/material/badge';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { EventsService } from '../../services/events.service';
 import { Event } from '../../models/event.model';
 import { HttpClient } from '@angular/common/http';
