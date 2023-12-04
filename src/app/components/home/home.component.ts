@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
 import { HttpClient } from '@angular/common/http';
 import { Event } from '../../models/event.model';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,8 @@ import { Event } from '../../models/event.model';
   styleUrl: './home.component.less'
 })
 export class HomeComponent implements OnInit{
-  title = "TecLead";
-  events: Event[] = [];
-  resultData: any = [];
+  events!: Event[];
+  resultData!: Observable<any>;
   city: string = "";
   startDate: string | undefined;
   endDate: string | undefined;
@@ -20,35 +20,48 @@ export class HomeComponent implements OnInit{
   
   ngOnInit(): void {
     this.getEvents();
+
+    this.eventsService.change.subscribe(filteredEvents => {
+      this.events = filteredEvents;
+      this.resultData = of(this.groupByDate(filteredEvents));
+    });
   }
 
   getEvents() {
     this.eventsService.getAllEvents()
     .subscribe((events: any) => {
-      this.events = events;
-      this.events = this.sortByDate(this.events);
-      this.city = this.events[0].city;
-      this.startDate = this.events[0].date;
-      this.endDate = this.events[this.events.length - 1].date;
-      console.log("-", this.events)
-
-      const data = new Set(this.events.map(item => item.startTime))
-      data.forEach((date)=>{
-           this.resultData.push({
-              date: date, 
-              events: this.events.filter(i => i.startTime === date)
-            })
-      })
-      console.log("data", data)
-      console.log("resultData", this.resultData)
+      this.events = this.sortByDate(events);
+      this.city = events[0].city;
+      this.startDate = events[0].date;
+      this.endDate = events[events.length - 1].date;
+      
+      console.log("-", this.events);
+      
+      this.resultData = of(this.groupByDate(this.events));
     });
   }
 
   sortByDate(events: Event[]): Event[]{
     const sortedAscEvents = events.sort(
-      (objA, objB) => new Date(objA.date).getTime() - new Date(objB.date).getTime(),
-      
+      (objA, objB) => new Date(objA.date).getTime() - new Date(objB.date).getTime(), 
     );
+
     return sortedAscEvents;
+  }
+
+  groupByDate(events: Event[]): any {
+    const data = new Set(events.map((item: Event) => item.startTime))
+    let resultData: { date: string; events: Event[]; }[] = [];
+    data.forEach((date) => {
+      resultData.push({
+        date: date, 
+        events: events.filter((i: Event) => i.startTime === date)
+      });
+    });
+
+    console.log("data", data);
+    console.log("resultData", resultData);
+
+    return resultData;
   }
 }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { Event } from '../models/event.model';
 import { Observable, throwError } from 'rxjs';
@@ -11,7 +11,9 @@ import { Artist } from '../models/artist.model';
   providedIn: 'root'
 })
 export class EventsService {
-  
+  filteredEvents: Event[] = [];
+  @Output() change: EventEmitter<Event[]> = new EventEmitter();
+
   constructor(public http: HttpClient) { }
 
   getAllEvents(): Observable<Event[]> {
@@ -52,5 +54,13 @@ export class EventsService {
         console.log(error)
         return throwError( 'Something went wrong!' );
       }));
+  }
+
+  filterEvents(events: Event[], value: string): Event[]{
+    if(value != "") {
+      this.filteredEvents = events.filter(event => event.title.toLowerCase().includes(value.toLowerCase()));
+      this.change.emit(this.filteredEvents);
+    }
+    return this.filteredEvents;
   }
 }

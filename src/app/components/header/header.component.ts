@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 import { EventsService } from '../../services/events.service';
 import { Event } from '../../models/event.model';
@@ -37,13 +37,16 @@ export class HeaderComponent implements OnInit{
       this.events = events;
       console.log("This.getEvents", this.events);
 
-      this.options = this.events.map((event :Event) => {
+      this.options = events.map((event :Event) => {
         return event.title;
       });
 
       this.filteredOptions = this.myControl.valueChanges.pipe(
         startWith(''),
-        map(value => this._filter(value || '')),
+        map(value => {
+          this.eventsService.filterEvents(this.events, value || "");
+          return this._filter(value || '')
+        }),
       );
     });
   }

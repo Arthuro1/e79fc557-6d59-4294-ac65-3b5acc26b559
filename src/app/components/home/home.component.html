@@ -22,23 +22,22 @@
     <div class="divider" ></div>
     <div class="left-side">
       <h1>Public Events</h1>
-      <div *ngFor="let monthData of resultData">
+      @for (data of resultData | async; track data) {
         <div class="upcoming-container">
               <div class="upcoming-container-title-section">
-                <h3>{{monthData.date | date : 'EEE, MMM d, y' | uppercase}}</h3>
+                <h3>{{data.date | date : 'EEE, MMM d, y' | uppercase}}</h3>
                 <div class="divider-card" ></div>
               
               <div class="">
                 <mat-grid-list cols="2" rowHeight="1:1">
-                  <mat-grid-tile *ngFor="let event of monthData.events" class="">
+                  <mat-grid-tile *ngFor="let event of data.events" class="">
                     <app-event-card [event]="event">
                     </app-event-card>
                   </mat-grid-tile>
                 </mat-grid-list>
               </div>
             </div>
-            </div>
-        </div>
+            </div>}
     </div>
     <div class="divider" ></div>
     <div class="right-side">
