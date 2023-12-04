@@ -14,20 +14,26 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { StickyTitleDirective } from './directives/sticky-title.directive';
+import { EventCardComponent } from './components/event-card/event-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    StickyTitleDirective,
+    EventCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule, 
+    FormsModule,
+    MatCardModule, 
     MatFormFieldModule, 
     MatAutocompleteModule, 
     ReactiveFormsModule, 
@@ -37,7 +43,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatIconModule, 
     MatBadgeModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

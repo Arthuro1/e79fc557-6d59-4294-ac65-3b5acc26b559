@@ -22,14 +22,19 @@
     <div class="divider" ></div>
     <div class="left-side">
       <h1>Public Events</h1>
-      <p>Date</p>
-      <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile>1</mat-grid-tile>
-        <mat-grid-tile>2</mat-grid-tile>
-        <mat-grid-tile>3</mat-grid-tile>
-        <mat-grid-tile>4</mat-grid-tile>
-      </mat-grid-list>
-      
+      <div *ngFor="let monthData of resultData">
+        <div class="upcoming-container">
+              <div class="upcoming-container-title-section color">
+                <h3>{{monthData.date | date : 'EEE, MMM d, y' | uppercase}}</h3>
+              </div>
+              <div class="upcoming-container-card-section">
+                <mat-grid-list cols="2" rowHeight="1:1">
+                <app-event-card  *ngFor="let card of monthData.events" class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 upcoming-container-card-item">
+                </app-event-card>
+              </mat-grid-list>
+              </div>
+            </div>
+        </div>
     </div>
     <div class="divider" ></div>
     <div class="right-side">
