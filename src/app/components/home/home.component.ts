@@ -11,9 +11,10 @@ import { Event } from '../../models/event.model';
 export class HomeComponent implements OnInit{
   title = "TecLead";
   events: Event[] = [];
+  resultData: any = [];
   city: string = "";
-  startDate: Date | undefined;
-  endDate: Date | undefined;
+  startDate: string | undefined;
+  endDate: string | undefined;
 
   constructor(private http: HttpClient, private eventsService: EventsService) {}
   
@@ -30,13 +31,22 @@ export class HomeComponent implements OnInit{
       this.startDate = this.events[0].date;
       this.endDate = this.events[this.events.length - 1].date;
       console.log("-", this.events)
-      console.log(this.startDate,"-", this.endDate)
+
+      const data = new Set(this.events.map(item => item.startTime))
+      data.forEach((date)=>{
+           this.resultData.push({
+              date: date, 
+              events: this.events.filter(i => i.startTime === date)
+            })
+      })
+      console.log("data", data)
+      console.log("resultData", this.resultData)
     });
   }
 
   sortByDate(events: Event[]): Event[]{
     const sortedAscEvents = events.sort(
-      (objA, objB) => objA.date.getTime() - objB.date.getTime(),
+      (objA, objB) => new Date(objA.date).getTime() - new Date(objB.date).getTime(),
       
     );
     return sortedAscEvents;

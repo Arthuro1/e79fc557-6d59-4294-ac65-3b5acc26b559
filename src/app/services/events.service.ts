@@ -19,14 +19,15 @@ export class EventsService {
     .pipe(
       map(
         data => {
+          console.log("raw date", data);
           return data.map( (_event) => ({
             _id: _event["_id"],
             title: _event["title"],
             flyerFront: _event["flyerFront"],
             attending: _event["attending"],
-            date: new Date(_event["date"]),
-            startTime: new Date(_event["startTime"]),
-            endTime: new Date(_event["endTime"]),
+            date: _event["date"],
+            startTime: _event["startTime"],
+            endTime: _event["endTime"],
             contentUrl: _event["contentUrl"],
             venue: {
               id: _event["venue"].id,

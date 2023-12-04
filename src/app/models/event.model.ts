@@ -8,9 +8,9 @@ export interface Event {
     title: string;
     flyerFront: string;
     attending: number;
-    date: Date;
-    startTime: Date;
-    endTime: Date;
+    date: string;
+    startTime: string;
+    endTime: string;
     contentUrl: string;
     venue: Venue;
     pick?: Pick;
