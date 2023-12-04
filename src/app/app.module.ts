@@ -20,6 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { StickyTitleDirective } from './directives/sticky-title.directive';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     HomeComponent,
     StickyTitleDirective,
     EventCardComponent,
-    TruncatePipe
+    TruncatePipe,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
