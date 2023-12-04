@@ -24,15 +24,19 @@
       <h1>Public Events</h1>
       <div *ngFor="let monthData of resultData">
         <div class="upcoming-container">
-              <div class="upcoming-container-title-section color">
+              <div class="upcoming-container-title-section">
                 <h3>{{monthData.date | date : 'EEE, MMM d, y' | uppercase}}</h3>
-              </div>
-              <div class="upcoming-container-card-section">
+                <div class="divider-card" ></div>
+              
+              <div class="">
                 <mat-grid-list cols="2" rowHeight="1:1">
-                <app-event-card  *ngFor="let card of monthData.events" class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 upcoming-container-card-item">
-                </app-event-card>
-              </mat-grid-list>
+                  <mat-grid-tile *ngFor="let event of monthData.events" class="">
+                    <app-event-card [event]="event">
+                    </app-event-card>
+                  </mat-grid-tile>
+                </mat-grid-list>
               </div>
+            </div>
             </div>
         </div>
     </div>
