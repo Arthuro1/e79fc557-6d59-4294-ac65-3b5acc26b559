@@ -24,9 +24,9 @@ export class EventsService {
             title: _event["title"],
             flyerFront: _event["flyerFront"],
             attending: _event["attending"],
-            date: _event["date"],
-            startTime: _event["startTime"],
-            endTime: _event["endTime"],
+            date: new Date(_event["date"]),
+            startTime: new Date(_event["startTime"]),
+            endTime: new Date(_event["endTime"]),
             contentUrl: _event["contentUrl"],
             venue: {
               id: _event["venue"].id,
