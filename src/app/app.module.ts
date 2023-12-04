@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { StickyTitleDirective } from './directives/sticky-title.directive';
 import { EventCardComponent } from './components/event-card/event-card.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EventCardComponent } from './components/event-card/event-card.component
     HeaderComponent,
     HomeComponent,
     StickyTitleDirective,
-    EventCardComponent
+    EventCardComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
