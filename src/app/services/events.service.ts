@@ -86,7 +86,7 @@ export class EventsService {
 
   sortByDate(events: Event[]): Event[]{
     const sortedAscEvents = events.sort(
-      (objA, objB) => new Date(objA.date).getTime() - new Date(objB.date).getTime(), 
+      (objA, objB) => new Date(objA.startTime).getTime() - new Date(objB.startTime).getTime(), 
     );
 
     return sortedAscEvents;

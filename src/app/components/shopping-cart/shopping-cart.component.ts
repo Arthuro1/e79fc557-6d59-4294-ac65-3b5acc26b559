@@ -22,8 +22,6 @@ export class ShoppingCartComponent implements OnInit{
     this.getData();
 
     this.eventsService.myEventsChange.subscribe(myEvents => {
-      this.myEvents = myEvents;
-      this.resultData = of(this.eventsService.groupByDate(myEvents));
       this.getData();
     });
   }
@@ -33,8 +31,8 @@ export class ShoppingCartComponent implements OnInit{
     if(this.myEvents.length > 0) {
       this.myEvents = this.eventsService.sortByDate(this.myEvents);
       this.city = of(this.myEvents[0].city);
-      this.startDate = of(this.myEvents[0].date);
-      this.endDate = of(this.myEvents[this.myEvents.length - 1].date);
+      this.startDate = of(this.myEvents[0].startTime);
+      this.endDate = of(this.myEvents[this.myEvents.length - 1].startTime);
       this.resultData = of(this.eventsService.groupByDate(this.myEvents));
     }
   }
