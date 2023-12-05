@@ -7,7 +7,7 @@
         <div class="">
         <mat-grid-list cols="2" rowHeight="1:1">
             <mat-grid-tile *ngFor="let event of data.events" class="">
-            <app-event-card [event]="event" [addToCart]="true">
+            <app-event-card [event]="event" [addToCart]="addToCart">
             </app-event-card>
             </mat-grid-tile>
         </mat-grid-list>

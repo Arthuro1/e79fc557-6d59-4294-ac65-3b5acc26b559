@@ -6,6 +6,7 @@
     @for (data of resultData | async; track data) {
       <app-section 
         [data]="data" 
+        [addToCart]="addToCart"
         (sectionPosition)="sectionPosition($event)">
       </app-section>
     }

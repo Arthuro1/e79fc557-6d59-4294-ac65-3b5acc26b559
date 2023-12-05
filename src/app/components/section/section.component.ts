@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SectionComponent implements OnInit{
   @Input() data!: any;
+  @Input() addToCart!: boolean;
   @Output() sectionPosition = new EventEmitter();
 
   constructor(private element: ElementRef) {}

@@ -10,6 +10,7 @@ export class ContainerComponent implements OnInit{
   public currentSectionName: string | undefined;
   private sectionsIndex: any = [];
   @Input() resultData!: Observable<any>;
+  @Input() addToCart!: boolean;
 
   constructor( private el: ElementRef) { }
 
