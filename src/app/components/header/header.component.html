@@ -3,7 +3,7 @@
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Events App</span>
+      <a [routerLink]="['/home']" routerLinkActive="active" ariaCurrentWhenActive="page"><span>Events App</span></a>
 
       <span class="example-spacer"></span>
       <mat-icon>search</mat-icon>
@@ -22,7 +22,7 @@
       <button mat-icon-button class="" aria-label="">
         <mat-icon>filter_alt</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="">
+      <button mat-icon-button class="example-icon" [routerLink]="['/myEvents']" routerLinkActive="active" ariaCurrentWhenActive="page" aria-label="">
         <mat-icon matBadge="15" matBadgeColor="warn">shopping_cart</mat-icon>
       </button>
     </mat-toolbar>
