@@ -1,0 +1,12 @@
+<div class="events">
+    <div class="header" *ngIf="currentSectionName">
+        <h3>{{currentSectionName | date : 'MMM d y, h:mm:ss a' | uppercase}}</h3>
+        <div class="divider"></div>
+    </div>
+    @for (data of resultData | async; track data) {
+      <app-section 
+        [data]="data" 
+        (sectionPosition)="sectionPosition($event)">
+      </app-section>
+    }
+  </div>
