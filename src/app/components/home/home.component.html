@@ -8,7 +8,7 @@
           rel="noopener"
         >
           <span class="fi fi-gb"> </span>
-          <span>{{ city | uppercase }}</span>
+          <span>{{ city | async | uppercase }}</span>
         </a>
         <a
           class="pill"
@@ -16,11 +16,11 @@
           target="_blank"
           rel="noopener"
         >
-          <span>{{startDate | date : "dd.MM.yyyy"}} - {{endDate | date : "dd.MM.yyyy"}}</span>
+          <span>{{startDate | async | date : "dd.MM.yyyy"}} - {{endDate | async | date : "dd.MM.yyyy"}}</span>
         </a>
         <h1>Public Events</h1>
     </div>
-    <app-container [resultData]="resultData"></app-container>
+    <app-container [resultData]="resultData" [addToCart]="true"></app-container>
     <app-footer></app-footer>
   </div>
 </main>

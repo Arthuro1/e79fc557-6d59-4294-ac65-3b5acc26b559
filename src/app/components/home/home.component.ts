@@ -11,9 +11,9 @@ import { Observable, of } from 'rxjs';
 export class HomeComponent implements OnInit{
   events!: Event[];
   resultData!: Observable<any>;
-  city: string = "";
-  startDate: string | undefined;
-  endDate: string | undefined;
+  city!: Observable<string | undefined>;
+  startDate!: Observable<string | undefined>;
+  endDate!: Observable<string | undefined>;
 
   constructor(private eventsService: EventsService) {}
   
@@ -30,9 +30,9 @@ export class HomeComponent implements OnInit{
     this.eventsService.getAllEvents()
       .subscribe((events: any) => {
         this.events = this.eventsService.sortByDate(events);
-        this.city = events[0].city;
-        this.startDate = events[0].startTime;
-        this.endDate = events[events.length - 1].startTime;
+        this.city = of(events[0].city);
+        this.startDate = of(events[0].startTime);
+        this.endDate = of(events[events.length - 1].startTime);
                 
         this.resultData = of(this.eventsService.groupByDate(this.events));
       });

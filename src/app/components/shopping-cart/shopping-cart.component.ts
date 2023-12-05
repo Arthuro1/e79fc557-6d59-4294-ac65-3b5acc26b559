@@ -22,7 +22,6 @@ export class ShoppingCartComponent implements OnInit{
     this.getData();
 
     this.eventsService.myEventsChange.subscribe(myEvents => {
-      console.log("myEventsChange")
       this.getData();
     });
   }
