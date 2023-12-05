@@ -1,1 +1,44 @@
-<p>shopping-cart works!</p>
+<main class="main">
+    <div class="content">
+      <div class="pill-group">
+        <a *ngIf="city"
+            class="pill"
+            [href]=""
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="fi fi-gb"> </span>
+            <span>{{ city | uppercase }}</span>
+          </a>
+          <a *ngIf="startDate and endDate"
+            class="pill"
+            [href]=""
+            target="_blank"
+            rel="noopener"
+          >
+            <span>{{startDate | date : "dd.MM.yyyy"}} - {{endDate | date : "dd.MM.yyyy"}}</span>
+          </a>
+      </div>
+      <div class="left-side">
+        <h1>My Public Events</h1>
+        @for (data of resultData | async; track data) {
+          <div class="upcoming-container">
+                <div class="upcoming-container-title-section">
+                  <h3>{{data.date | date : 'EEE, MMM d, y' | uppercase}}</h3>
+                  <div class="divider" ></div>
+                
+                <div class="">
+                  <mat-grid-list cols="2" rowHeight="1:1">
+                    <mat-grid-tile *ngFor="let event of data.events" class="">
+                      <app-event-card [event]="event" [addToCart]="false">
+                      </app-event-card>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </div>
+              </div>
+              </div>}
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </main>
+  

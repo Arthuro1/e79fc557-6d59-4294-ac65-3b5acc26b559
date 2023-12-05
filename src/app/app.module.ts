@@ -21,6 +21,7 @@ import { StickyTitleDirective } from './directives/sticky-title.directive';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     StickyTitleDirective,
     EventCardComponent,
     TruncatePipe,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
