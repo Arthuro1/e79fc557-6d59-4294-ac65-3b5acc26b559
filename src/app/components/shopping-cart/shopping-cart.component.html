@@ -8,7 +8,7 @@
             rel="noopener"
           >
             <span class="fi fi-gb"> </span>
-            <span>{{ city | uppercase }}</span>
+            <span>{{ city | async | uppercase }}</span>
           </a>
           <a *ngIf="startDate and endDate"
             class="pill"
@@ -16,7 +16,7 @@
             target="_blank"
             rel="noopener"
           >
-            <span>{{startDate | date : "dd.MM.yyyy"}} - {{endDate | date : "dd.MM.yyyy"}}</span>
+            <span>{{startDate | async | date : "dd.MM.yyyy"}} - {{endDate | async | date : "dd.MM.yyyy"}}</span>
           </a>
       </div>
       <div class="left-side">

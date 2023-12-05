@@ -79,7 +79,7 @@ export class EventsService {
     const found = this.myEvents.find((myEvent) => myEvent._id === event._id);
     
     if (found) {
-      this.myEvents.filter(myEvent => myEvent._id == event._id);
+      this.myEvents = this.myEvents.filter(myEvent => myEvent._id !== event._id);
       this.myEventsChange.emit(this.myEvents);
     }
   }
