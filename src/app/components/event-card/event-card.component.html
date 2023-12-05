@@ -3,9 +3,11 @@
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{event.title | truncate:32 }}</mat-card-title>
     </mat-card-header>
+    
     <div class="flyer">
-      <img mat-card-image src={{event.flyerFront}} alt="Photo of a Shiba Inu">
+      <img mat-card-image src={{event.flyerFront}} alt="Flyer">
     </div>
+
     <mat-card-content>
       <a href={{event.venue.direction}} target="_blank"
       rel="noopener">
@@ -18,9 +20,10 @@
       <p>| Starts: {{event.startTime | date: "MMM d, y, h:mm:ss a"}}</p>
       <p>| Ends: {{event.endTime | date: "MMM d, y, h:mm:ss a"}}</p>
     </mat-card-content>
+
     <mat-card-actions align="end">
-      <button color="primary" mat-icon-button>
-        <mat-icon>add-circle-outlined</mat-icon>
+      <button (click)="addOrRemoveFromMyEvents()" color="primary" mat-icon-button>
+        <mat-icon>{{addToCart ? "add-circle-outlined" : "do_not_disturb_on"}}</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>

@@ -12,7 +12,9 @@ import { Artist } from '../models/artist.model';
 })
 export class EventsService {
   filteredEvents: Event[] = [];
-  @Output() change: EventEmitter<Event[]> = new EventEmitter();
+  myEvents: Event[] = [];
+  @Output() inputChange: EventEmitter<Event[]> = new EventEmitter();
+  @Output() myEventsChange: EventEmitter<Event[]> = new EventEmitter();
 
   constructor(public http: HttpClient) { }
 
@@ -59,8 +61,50 @@ export class EventsService {
   filterEvents(events: Event[], value: string): Event[]{
     if(value != "") {
       this.filteredEvents = events.filter(event => event.title.toLowerCase().includes(value.toLowerCase()));
-      this.change.emit(this.filteredEvents);
+      this.inputChange.emit(this.filteredEvents);
     }
     return this.filteredEvents;
+  }
+
+  addToMyEvents(event: Event){
+    const found = this.myEvents.find((myEvent) => myEvent._id === event._id);
+    
+    if(!found){
+      this.myEvents.push(event);
+      this.myEventsChange.emit(this.myEvents);
+    }
+  }
+
+  removeFromMyEvents(event: Event){
+    const found = this.myEvents.find((myEvent) => myEvent._id === event._id);
+    
+    if (found) {
+      this.myEvents.filter(myEvent => myEvent._id == event._id);
+      this.myEventsChange.emit(this.myEvents);
+    }
+  }
+
+  sortByDate(events: Event[]): Event[]{
+    const sortedAscEvents = events.sort(
+      (objA, objB) => new Date(objA.date).getTime() - new Date(objB.date).getTime(), 
+    );
+
+    return sortedAscEvents;
+  }
+
+  groupByDate(events: Event[]): any {
+    const data = new Set(events.map((item: Event) => item.startTime))
+    let resultData: { date: string; events: Event[]; }[] = [];
+    data.forEach((date) => {
+      resultData.push({
+        date: date, 
+        events: events.filter((i: Event) => i.startTime === date)
+      });
+    });
+
+    console.log("data", data);
+    console.log("resultData", resultData);
+
+    return resultData;
   }
 }
