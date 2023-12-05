@@ -1,0 +1,16 @@
+<div class="upcoming-container">
+    <div class="upcoming-container-title-section">
+        <h3>{{data.date | date : 'MMM d y, h:mm:ss a' | uppercase}}</h3>
+        
+        <div class="divider"></div>
+    
+        <div class="">
+        <mat-grid-list cols="2" rowHeight="1:1">
+            <mat-grid-tile *ngFor="let event of data.events" class="">
+            <app-event-card [event]="event" [addToCart]="true">
+            </app-event-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+        </div>
+  </div>
+  </div>

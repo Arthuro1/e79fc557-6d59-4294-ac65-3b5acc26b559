@@ -22,6 +22,8 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ContainerComponent } from './components/container/container.component';
+import { SectionComponent } from './components/section/section.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FooterComponent } from './components/footer/footer.component';
     EventCardComponent,
     TruncatePipe,
     ShoppingCartComponent,
-    FooterComponent
+    FooterComponent,
+    ContainerComponent,
+    SectionComponent
   ],
   imports: [
     BrowserModule,
