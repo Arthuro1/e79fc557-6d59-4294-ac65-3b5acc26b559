@@ -41,11 +41,6 @@ export class ContainerComponent implements OnInit{
   private getCurrentSectionName(): string | undefined {
       let offset: number = this.el.nativeElement.parentElement.offsetTop - this.el.nativeElement.offsetTop;
       for (let section of this.sectionsIndex) {
-          //Note: 13px is the margin-top value of the h2 element in the header
-          console.log("section.position", section.position)
-          console.log("offset", offset)
-          console.log("window.scrollY", window.scrollY)
-
           if ((section.position - offset - window.scrollY) < 0) {
               return section.date;
           }
